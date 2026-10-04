@@ -1,0 +1,1319 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Biotechnology Portfolio | Research & Innovation</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", "Segoe UI", sans-serif;
+            background: #07110e;
+            color: #e8f5ef;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --green: #69f0ae;
+            --green-dark: #0d3b2e;
+            --cyan: #5ee7f2;
+            --purple: #a78bfa;
+            --bg: #07110e;
+            --card: rgba(15, 35, 29, 0.72);
+            --border: rgba(105, 240, 174, 0.16);
+            --muted: #9db4aa;
+        }
+
+        /* ---------------- NAVBAR ---------------- */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 7%;
+
+            background: rgba(7, 17, 14, 0.72);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #d8e9e2;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+        }
+
+        /* ---------------- HERO ---------------- */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 130px 8% 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle,
+                rgba(105,240,174,0.13),
+                transparent 70%);
+            top: -150px;
+            right: -150px;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle,
+                rgba(94,231,242,0.08),
+                transparent 70%);
+            bottom: -250px;
+            left: -200px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            color: var(--green);
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: 0.95;
+            letter-spacing: -4px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 span {
+            color: var(--green);
+        }
+
+        .hero-description {
+            max-width: 720px;
+            color: var(--muted);
+            font-size: 1.15rem;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: #06110d;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(105,240,174,0.2);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+            color: white;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        /* ---------------- GENERAL ---------------- */
+
+        section {
+            padding: 110px 8%;
+            position: relative;
+        }
+
+        .section-label {
+            color: var(--green);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.78rem;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 50px;
+            letter-spacing: -1px;
+        }
+
+        .section-title span {
+            color: var(--green);
+        }
+
+        /* ---------------- ABOUT ---------------- */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text {
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        .about-text p {
+            margin-bottom: 18px;
+        }
+
+        .scientific-box {
+            border: 1px solid var(--border);
+            background: var(--card);
+            padding: 30px;
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .scientific-box h3 {
+            color: var(--green);
+            margin-bottom: 20px;
+        }
+
+        .scientific-box ul {
+            list-style: none;
+        }
+
+        .scientific-box li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: #b9cec5;
+        }
+
+        .scientific-box li:last-child {
+            border-bottom: none;
+        }
+
+        /* ---------------- EDUCATION ---------------- */
+
+        .timeline {
+            max-width: 900px;
+            margin: auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(105,240,174,0.25);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 45px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 4px;
+            top: 8px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 20px rgba(105,240,174,0.5);
+        }
+
+        .timeline-year {
+            color: var(--green);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.4rem;
+            margin: 6px 0;
+        }
+
+        .timeline-item p {
+            color: var(--muted);
+        }
+
+        /* ---------------- RESEARCH ---------------- */
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .research-card {
+            padding: 30px;
+            min-height: 230px;
+            border-radius: 22px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            transition: 0.4s;
+        }
+
+        .research-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(105,240,174,0.4);
+            background: rgba(18, 48, 38, 0.8);
+        }
+
+        .research-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .research-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .research-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* ---------------- LAB ---------------- */
+
+        .lab-section {
+            background:
+                linear-gradient(rgba(7,17,14,0.96), rgba(7,17,14,0.96)),
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(105,240,174,0.02) 10px,
+                    rgba(105,240,174,0.02) 11px
+                );
+        }
+
+        .lab-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .lab-item {
+            padding: 22px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            text-align: center;
+            color: #c8d9d2;
+            background: rgba(10,28,22,0.7);
+            transition: 0.3s;
+        }
+
+        .lab-item:hover {
+            color: var(--green);
+            transform: scale(1.03);
+        }
+
+        /* ---------------- PROJECTS ---------------- */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            padding: 35px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            background: linear-gradient(
+                145deg,
+                rgba(17,40,32,0.9),
+                rgba(8,22,18,0.8)
+            );
+            transition: 0.4s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .project-number {
+            font-size: 0.75rem;
+            color: var(--green);
+            letter-spacing: 2px;
+        }
+
+        .project-card h3 {
+            margin: 12px 0;
+            font-size: 1.5rem;
+        }
+
+        .project-card p {
+            color: var(--muted);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            font-size: 0.72rem;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background: rgba(105,240,174,0.08);
+            color: var(--green);
+            border: 1px solid rgba(105,240,174,0.12);
+        }
+
+        /* ---------------- SKILLS ---------------- */
+
+        .skills-container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .skill {
+            margin-bottom: 25px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .skill-info span:last-child {
+            color: var(--green);
+            font-size: 0.8rem;
+        }
+
+        .skill-bar {
+            height: 7px;
+            background: #15251f;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--green), var(--cyan));
+            border-radius: 20px;
+            transition: width 1.5s ease;
+        }
+
+        /* ---------------- INTERESTS ---------------- */
+
+        .interest-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .interest {
+            padding: 12px 18px;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: #c8d8d1;
+            transition: 0.3s;
+        }
+
+        .interest:hover {
+            color: var(--green);
+            border-color: var(--green);
+        }
+
+        /* ---------------- SCIENCE TERMINAL ---------------- */
+
+        .terminal {
+            max-width: 900px;
+            margin: auto;
+            background: #020806;
+            border: 1px solid rgba(105,240,174,0.15);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 20px 70px rgba(0,0,0,0.3);
+        }
+
+        .terminal-header {
+            padding: 12px 18px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: #789188;
+            font-size: 0.8rem;
+        }
+
+        .terminal-body {
+            padding: 25px;
+            font-family: "Courier New", monospace;
+            color: var(--green);
+            min-height: 220px;
+            font-size: 0.9rem;
+        }
+
+        .cursor {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* ---------------- FOOTER ---------------- */
+
+        footer {
+            padding: 50px 8%;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            color: #6f867c;
+        }
+
+        footer span {
+            color: var(--green);
+        }
+
+        /* ---------------- RESPONSIVE ---------------- */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .about-grid,
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .lab-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            section {
+                padding: 80px 6%;
+            }
+
+            .hero {
+                padding-left: 6%;
+                padding-right: 6%;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .research-grid,
+            .lab-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="logo">BIO // LAB</div>
+
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                Biotechnology • Biochemistry • Research
+            </div>
+
+            <h1>
+                Exploring life<br>
+                at the <span>molecular level.</span>
+            </h1>
+
+            <p class="hero-description">
+                Biotechnology student interested in research, molecular biology,
+                biochemistry, genetic engineering and the application of emerging
+                technologies to biological problems.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#research" class="btn btn-primary">
+                    Explore Research
+                </a>
+
+                <a href="#projects" class="btn btn-outline">
+                    View Projects
+                </a>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="section-label">01 / Profile</div>
+
+        <h2 class="section-title">
+            Biology, technology & <span>curiosity.</span>
+        </h2>
+
+        <div class="about-grid">
+
+            <div class="about-text">
+
+                <p>
+                    I am a Biotechnology undergraduate with a growing interest
+                    in understanding biological systems through molecular,
+                    cellular and computational approaches.
+                </p>
+
+                <p>
+                    My academic interests span microbiology, molecular biology,
+                    biochemistry, genetic engineering, bioinformatics and
+                    systems biology.
+                </p>
+
+                <p>
+                    I am particularly interested in how biotechnology can be
+                    used to understand disease mechanisms, antimicrobial
+                    resistance, genetic regulation and the design of new
+                    biological solutions.
+                </p>
+
+                <p>
+                    Alongside laboratory learning, I explore scientific
+                    literature, research methodologies, digital tools and
+                    technology-driven approaches to biological problems.
+                </p>
+
+            </div>
+
+
+            <div class="scientific-box">
+
+                <h3>Current Scientific Identity</h3>
+
+                <ul>
+                    <li>🧬 Biotechnology Undergraduate</li>
+                    <li>🔬 Research-Oriented Learner</li>
+                    <li>🧪 Laboratory Experience</li>
+                    <li>🦠 Microbiology Enthusiast</li>
+                    <li>🧫 Molecular Biology</li>
+                    <li>⚗️ Biochemistry</li>
+                    <li>💻 Biology × Technology</li>
+                    <li>🧠 Scientific Problem Solving</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EDUCATION -->
+
+    <section id="education">
+
+        <div class="section-label">02 / Education</div>
+
+        <h2 class="section-title">
+            Academic <span>foundation.</span>
+        </h2>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-year">
+                    Undergraduate
+                </div>
+
+                <h3>B.Tech in Biotechnology</h3>
+
+                <p>
+                    Undergraduate study focused on biotechnology,
+                    molecular biology, microbiology, biochemistry,
+                    genetics and related life-science disciplines.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-year">
+                    Core Coursework
+                </div>
+
+                <h3>Life Sciences & Biotechnology</h3>
+
+                <p>
+                    Microbiology • Biochemistry • Molecular Biology •
+                    Genetics • Genetic Engineering • Plant Tissue Culture •
+                    Systems Biology • Bioinformatics
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-year">
+                    Complementary Learning
+                </div>
+
+                <h3>Technology & Scientific Communication</h3>
+
+                <p>
+                    Web development, data-oriented thinking, scientific
+                    presentations, research literature and digital tools.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESEARCH INTERESTS -->
+
+    <section id="research">
+
+        <div class="section-label">03 / Research</div>
+
+        <h2 class="section-title">
+            Areas I want to <span>explore.</span>
+        </h2>
+
+        <div class="research-grid">
+
+            <div class="research-card">
+                <div class="research-icon">🧬</div>
+                <h3>CRISPR & Gene Editing</h3>
+                <p>
+                    Exploring CRISPR systems, genome engineering,
+                    gene regulation and their potential applications
+                    in biotechnology and medicine.
+                </p>
+            </div>
+
+
+            <div class="research-card">
+                <div class="research-icon">🦠</div>
+                <h3>Antimicrobial Resistance</h3>
+                <p>
+                    Interested in bacterial resistance mechanisms,
+                    antibiotic targets, fluoroquinolone resistance,
+                    DNA gyrase, topoisomerase IV and resistance genes.
+                </p>
+            </div>
+
+
+            <div class="research-card">
+                <div class="research-icon">🧫</div>
+                <h3>Microbiology</h3>
+                <p>
+                    Studying microbial physiology, bacterial communication,
+                    quorum sensing, microorganisms and their biotechnology
+                    applications.
+                </p>
+            </div>
+
+
+            <div class="research-card">
+                <div class="research-icon">⚗️</div>
+                <h3>Biochemistry</h3>
+                <p>
+                    Interested in enzymes, proteins, metabolism,
+                    molecular interactions, biochemical pathways
+                    and analytical techniques.
+                </p>
+            </div>
+
+
+            <div class="research-card">
+                <div class="research-icon">💻</div>
+                <h3>AI in Biology</h3>
+                <p>
+                    Exploring how artificial intelligence and computational
+                    approaches can assist biological research, including
+                    prediction of antibiotic resistance.
+                </p>
+            </div>
+
+
+            <div class="research-card">
+                <div class="research-icon">🌱</div>
+                <h3>Plant Biotechnology</h3>
+                <p>
+                    Interested in plant tissue culture, explant
+                    sterilisation, biotechnology applications and
+                    controlled plant growth systems.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LABORATORY -->
+
+    <section class="lab-section">
+
+        <div class="section-label">04 / Laboratory</div>
+
+        <h2 class="section-title">
+            From theory to the <span>laboratory.</span>
+        </h2>
+
+        <div class="lab-grid">
+
+            <div class="lab-item">Microbiology</div>
+            <div class="lab-item">Biochemistry</div>
+            <div class="lab-item">Clinical Laboratory</div>
+            <div class="lab-item">Electrolyte Analysis</div>
+
+            <div class="lab-item">Microbial Techniques</div>
+            <div class="lab-item">Sterilisation</div>
+            <div class="lab-item">Plant Tissue Culture</div>
+            <div class="lab-item">Laboratory Safety</div>
+
+            <div class="lab-item">Scientific Observation</div>
+            <div class="lab-item">Experimental Analysis</div>
+            <div class="lab-item">Research Documentation</div>
+            <div class="lab-item">Scientific Presentation</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+
+        <div class="section-label">05 / Projects & Research</div>
+
+        <h2 class="section-title">
+            Questions worth <span>investigating.</span>
+        </h2>
+
+        <div class="projects">
+
+            <div class="project-card">
+
+                <div class="project-number">PROJECT 01</div>
+
+                <h3>AI in Predicting Antibiotic Resistance</h3>
+
+                <p>
+                    Research-oriented exploration of how artificial
+                    intelligence and machine learning can contribute
+                    to predicting antimicrobial resistance and supporting
+                    biological decision-making.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">AI</span>
+                    <span class="tag">AMR</span>
+                    <span class="tag">Microbiology</span>
+                    <span class="tag">Research</span>
+                </div>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-number">PROJECT 02</div>
+
+                <h3>Quorum Sensing</h3>
+
+                <p>
+                    Study of bacterial cell-to-cell communication,
+                    including quorum sensing mechanisms in Gram-positive
+                    and Gram-negative bacteria and their biological
+                    significance.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Bacteria</span>
+                    <span class="tag">Lux Systems</span>
+                    <span class="tag">Gene Regulation</span>
+                </div>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-number">PROJECT 03</div>
+
+                <h3>Surface Sterilisation of Explants</h3>
+
+                <p>
+                    Academic work exploring surface sterilisation
+                    approaches used in plant tissue culture for establishing
+                    contamination-free explants.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">Plant Tissue Culture</span>
+                    <span class="tag">Aseptic Technique</span>
+                    <span class="tag">Plant Biotechnology</span>
+                </div>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-number">PROJECT 04</div>
+
+                <h3>International Intellectual Property in Biotechnology</h3>
+
+                <p>
+                    Academic exploration of international intellectual
+                    property frameworks relevant to innovation,
+                    biotechnology and scientific inventions.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">IP</span>
+                    <span class="tag">Biotechnology</span>
+                    <span class="tag">Innovation</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BIOCHEMISTRY -->
+
+    <section>
+
+        <div class="section-label">06 / Biochemistry</div>
+
+        <h2 class="section-title">
+            The chemistry <span>of life.</span>
+        </h2>
+
+        <div class="research-grid">
+
+            <div class="research-card">
+                <h3>Enzymology</h3>
+                <p>
+                    Enzyme structure, catalytic activity, biochemical
+                    reactions and molecular mechanisms.
+                </p>
+            </div>
+
+            <div class="research-card">
+                <h3>Metabolism</h3>
+                <p>
+                    Understanding biochemical pathways and the molecular
+                    transformations that sustain cellular life.
+                </p>
+            </div>
+
+            <div class="research-card">
+                <h3>Proteins</h3>
+                <p>
+                    Protein structure, interactions, function and their
+                    importance in cellular systems.
+                </p>
+            </div>
+
+            <div class="research-card">
+                <h3>Genetic Information</h3>
+                <p>
+                    DNA replication, gene expression, regulation and
+                    molecular information transfer.
+                </p>
+            </div>
+
+            <div class="research-card">
+                <h3>Bioenergetics</h3>
+                <p>
+                    Thermodynamics, Gibbs free energy, electrochemical
+                    potential and energy transformations in biological systems.
+                </p>
+            </div>
+
+            <div class="research-card">
+                <h3>Analytical Biology</h3>
+                <p>
+                    Connecting biochemical principles with laboratory
+                    measurements and biological analysis.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+
+        <div class="section-label">07 / Skills</div>
+
+        <h2 class="section-title">
+            Scientific <span>toolkit.</span>
+        </h2>
+
+        <div class="skills-container">
+
+            <div class="skill">
+                <div class="skill-info">
+                    <span>Biotechnology Fundamentals</span>
+                    <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-width="90%"></div>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-info">
+                    <span>Microbiology</span>
+                    <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-width="85%"></div>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-info">
+                    <span>Biochemistry</span>
+                    <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-width="85%"></div>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-info">
+                    <span>Molecular Biology</span>
+                    <span>80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-width="80%"></div>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-info">
+                    <span>Research & Scientific Literature</span>
+                    <span>80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-width="80%"></div>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-info">
+                    <span>HTML / CSS / JavaScript</span>
+                    <span>70%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-width="70%"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCIENTIFIC INTERESTS -->
+
+    <section>
+
+        <div class="section-label">08 / Interests</div>
+
+        <h2 class="section-title">
+            Curiosity <span>map.</span>
+        </h2>
+
+        <div class="interest-grid">
+
+            <div class="interest">CRISPR</div>
+            <div class="interest">Genetic Engineering</div>
+            <div class="interest">Molecular Biology</div>
+            <div class="interest">Microbiology</div>
+            <div class="interest">Biochemistry</div>
+            <div class="interest">Antimicrobial Resistance</div>
+            <div class="interest">AI + Biology</div>
+            <div class="interest">Bioinformatics</div>
+            <div class="interest">Systems Biology</div>
+            <div class="interest">Synthetic Biology</div>
+            <div class="interest">Plant Biotechnology</div>
+            <div class="interest">Gene Regulation</div>
+            <div class="interest">Drug Discovery</div>
+            <div class="interest">Scientific Innovation</div>
+        </div>
+
+    </section>
+
+
+    <!-- INTERACTIVE SCIENCE TERMINAL -->
+
+    <section>
+
+        <div class="section-label">09 / Biological Systems</div>
+
+        <h2 class="section-title">
+            A small window into the <span>lab.</span>
+        </h2>
+
+        <div class="terminal">
+
+            <div class="terminal-header">
+                biological_system.exe
+            </div>
+
+            <div class="terminal-body" id="terminal">
+                <span id="terminalText"></span>
+                <span class="cursor">█</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            Built around <span>biology</span>,
+            driven by <span>curiosity</span>,
+            directed towards <span>research</span>.
+        </p>
+
+        <p style="margin-top:10px;">
+            Biotechnology × Biochemistry × Technology
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        /* ---------------- SKILL BAR ANIMATION ---------------- */
+
+        const skillBars = document.querySelectorAll(".skill-progress");
+
+        const observer = new IntersectionObserver((entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.style.width =
+                        entry.target.dataset.width;
+
+                }
+
+            });
+
+        }, {
+            threshold: 0.4
+        });
+
+
+        skillBars.forEach(bar => {
+            observer.observe(bar);
+        });
+
+
+        /* ---------------- BIOLOGICAL TERMINAL ---------------- */
+
+        const terminalText = document.getElementById("terminalText");
+
+        const messages = [
+            "> Initialising biological system...",
+            "> Loading molecular pathways...",
+            "> Analysing DNA...",
+            "> Mapping gene regulation...",
+            "> Inspecting microbial communication...",
+            "> Studying biochemical reactions...",
+            "> Exploring biotechnology applications...",
+            "> Research mode: ACTIVE",
+            "> Curiosity level: HIGH",
+            "> Status: READY TO DISCOVER."
+        ];
+
+        let line = 0;
+        let char = 0;
+
+        function typeTerminal() {
+
+            if (line >= messages.length) {
+                setTimeout(() => {
+                    terminalText.innerHTML = "";
+                    line = 0;
+                    char = 0;
+                    typeTerminal();
+                }, 3500);
+
+                return;
+            }
+
+            if (char < messages[line].length) {
+
+                terminalText.innerHTML +=
+                    messages[line].charAt(char);
+
+                char++;
+
+                setTimeout(typeTerminal, 35);
+
+            } else {
+
+                terminalText.innerHTML += "<br>";
+
+                line++;
+                char = 0;
+
+                setTimeout(typeTerminal, 500);
+            }
+        }
+
+        typeTerminal();
+
+
+        /* ---------------- NAVBAR SCROLL EFFECT ---------------- */
+
+        window.addEventListener("scroll", () => {
+
+            const nav = document.querySelector("nav");
+
+            if (window.scrollY > 50) {
+                nav.style.background =
+                    "rgba(4, 12, 9, 0.92)";
+            } else {
+                nav.style.background =
+                    "rgba(7, 17, 14, 0.72)";
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
+```
